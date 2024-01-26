@@ -27,7 +27,7 @@ class Blog(models.Model):
     category = models.ForeignKey(Category, models.PROTECT, related_name="BlogCategory")
     publish_date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, models.PROTECT, related_name="UserBlog")
-    status = models.CharField(max_length=1, choices=STATUS, blank=True, null=True)
+    status = models.CharField(max_length=1, choices=STATUS)
 
     class Meta:
         verbose_name = "blog"
@@ -56,7 +56,7 @@ class Comment(models.Model):
 
 class PostView(models.Model):
     user = models.ForeignKey(User, models.PROTECT, related_name = "UserPostViews")
-    post_views = models.BooleanField(default=True)
+    post_views = models.BooleanField(default=False)
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name = "BlogPostViews")
     time_stamp = models.DateTimeField(auto_now_add=True)
 
@@ -71,7 +71,7 @@ class PostView(models.Model):
 class Like(models.Model):
     user = models.ForeignKey(User, models.PROTECT, related_name = "UserLikes")
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name = "BlogLikes")
-    likes = models.BooleanField(default=True)
+    likes = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = "like"
