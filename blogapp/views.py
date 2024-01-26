@@ -1,6 +1,6 @@
 from rest_framework.viewsets import ModelViewSet
 from .models import Blog, Category, Comment, Like, PostView
-from .permissons import IsStaffOrReadOnly, IsOwnerOrReadOnly, IsOwnerUserOrReadOnly
+from .permissions import IsStaffOrReadOnly, IsOwnerOrReadOnly, IsOwnerUserOrReadOnly
 from .serializers import BlogSerializer, CategorySerializer, CommentSerializer, LikeViewSerializer, UserBlogSerializer, PostViewSerializer
 from rest_framework.generics import RetrieveAPIView, UpdateAPIView
 
